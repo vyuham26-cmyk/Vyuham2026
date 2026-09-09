@@ -886,7 +886,7 @@ img{ max-width: 100%; display: block; }
   <div class="register__inner reveal">
     <p class="section-kicker">Join The Battle</p>
     <h2>Register Now</h2>
-    <p class="register__sub">Takes less than 2 minutes. One registration per participant, ₹250 per person.</p>
+    <p class="register__sub">Takes less than 2 minutes. ₹250 per person.</p>
 
     <div class="register__card">
       <svg class="register__seal" viewBox="0 0 48 48" fill="none" aria-hidden="true">
@@ -897,38 +897,6 @@ img{ max-width: 100%; display: block; }
         Open Registration Form
       </a>
       <p class="register__note">Opens the official Google Form in a new tab.</p>
-    </div>
-
-    <button class="register__toggle" id="registerToggle" aria-expanded="false">
-      Prefer to fill it in without leaving this page? <span>Show form here ▾</span>
-    </button>
-
-    <!--
-      TODO (organizer): For the cleanest embedded look, open your Google Form → Send →
-      the "<>" Embed tab → copy the <iframe> src (it will look like
-      https://docs.google.com/forms/d/e/XXXXXXXXXXXX/viewform?embedded=true) and paste it
-      below in place of the forms.gle link. The current src works out of the box on a live
-      deployment but shows Google's standard form chrome since forms.gle short links can't
-      carry the "?embedded=true" flag.
-    -->
-    <div class="register__frame-wrap" id="formWrap" hidden>
-      <div class="register__frame-loading" id="formLoading">
-        <span>Loading registration form…</span>
-      </div>
-      <div class="register__frame-fallback" id="formFallback" hidden>
-        <p>The embedded view didn't load — this can happen depending on your network or browser settings.</p>
-        <a href="https://forms.gle/jtR3rVd7NcHc9BQ87" target="_blank" rel="noopener" class="btn btn--gold">Open Form in New Tab</a>
-      </div>
-      <iframe
-        id="registerFrame"
-        data-src="https://forms.gle/jtR3rVd7NcHc9BQ87"
-        title="VYUHAM'26 Registration Form"
-        width="100%"
-        height="900"
-        frameborder="0"
-        marginheight="0"
-        marginwidth="0"
-        loading="lazy">Loading…</iframe>
     </div>
   </div>
 </section>
@@ -1186,52 +1154,6 @@ img{ max-width: 100%; display: block; }
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') closeModal();
   });
-
-  /* ---------- Register: on-demand embedded form ---------- */
-  var formWrap = document.getElementById('formWrap');
-  var formLoading = document.getElementById('formLoading');
-  var formFallback = document.getElementById('formFallback');
-  var frame = document.getElementById('registerFrame');
-  var toggleBtn = document.getElementById('registerToggle');
-  var formStarted = false;
-
-  function startFormLoad() {
-    if (formStarted) return;
-    formStarted = true;
-
-    frame.addEventListener('load', function () {
-      if (formLoading) formLoading.style.display = 'none';
-    });
-
-    frame.src = frame.getAttribute('data-src');
-
-    // If the frame never fires "load" within a few seconds (e.g. blocked by
-    // network/browser policy before any navigation completes), swap to the
-    // fallback panel instead of leaving a blank box on screen.
-    setTimeout(function () {
-      if (formLoading && formLoading.style.display !== 'none') {
-        formLoading.style.display = 'none';
-        if (formFallback) formFallback.hidden = false;
-      }
-    }, 6000);
-  }
-
-  if (toggleBtn) {
-    toggleBtn.addEventListener('click', function () {
-      var isOpen = toggleBtn.getAttribute('aria-expanded') === 'true';
-      if (isOpen) {
-        formWrap.hidden = true;
-        toggleBtn.setAttribute('aria-expanded', 'false');
-        toggleBtn.innerHTML = 'Prefer to fill it in without leaving this page? <span>Show form here ▾</span>';
-      } else {
-        formWrap.hidden = false;
-        toggleBtn.setAttribute('aria-expanded', 'true');
-        toggleBtn.innerHTML = 'Embedded form open below <span>Hide form ▴</span>';
-        startFormLoad();
-        formWrap.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'nearest' });
-      }
-    });
-  }
 })();
 
 </script>
