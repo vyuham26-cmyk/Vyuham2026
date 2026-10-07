@@ -1263,6 +1263,85 @@
         padding: 2px 10px;
       }
     }
+
+    /* ===== SECOND SCROLLING ANNOUNCEMENT BANNER (TRANSPORT) ===== */
+    .announcement-bar-transport {
+      position: relative;
+      width: 100%;
+      background: linear-gradient(90deg, #0a0a0c, #1b1b22, #0a0a0c);
+      overflow: hidden;
+      z-index: 10000;
+      padding: 8px 0;
+      margin-top: 3px;
+      border-top: 1px solid rgba(212, 160, 23, 0.35);
+      border-bottom: 1px solid rgba(212, 160, 23, 0.35);
+      box-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
+    }
+
+    .announcement-bar-transport .transport-track {
+      display: flex;
+      width: max-content;
+      animation: scroll-left 24s linear infinite;
+    }
+
+    .announcement-bar-transport .transport-track:hover {
+      animation-play-state: paused;
+    }
+
+    .announcement-bar-transport .transport-text {
+      display: inline-flex;
+      align-items: center;
+      gap: 20px;
+      white-space: nowrap;
+      padding: 0 50px;
+      font-family: var(--font-body), 'Rajdhani', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--ink, #f2ecdf);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .announcement-bar-transport .transport-text .transport-label {
+      color: var(--gold-bright, #f4c430);
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 1.5px;
+    }
+
+    .announcement-bar-transport .transport-text .transport-highlight {
+      background: linear-gradient(135deg, var(--gold, #d4a017), var(--gold-bright, #f4c430));
+      color: #0a0a0c;
+      padding: 3px 16px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      letter-spacing: 0.5px;
+    }
+
+    .announcement-bar-transport .transport-text .transport-sep {
+      color: var(--gold, #d4a017);
+      font-size: 0.65rem;
+      opacity: 0.6;
+    }
+
+    @media (max-width: 600px) {
+      .announcement-bar-transport {
+        padding: 6px 0;
+      }
+      .announcement-bar-transport .transport-text {
+        font-size: 0.78rem;
+        gap: 14px;
+        padding: 0 25px;
+      }
+      .announcement-bar-transport .transport-text .transport-label {
+        font-size: 0.75rem;
+      }
+      .announcement-bar-transport .transport-text .transport-highlight {
+        font-size: 0.78rem;
+        padding: 2px 10px;
+      }
+    }
   </style>
 </head>
 
@@ -1272,26 +1351,34 @@
   <div class="announcement-bar" id="announcementBar">
     <div class="announcement-bar__track">
       <span class="announcement-bar__text">
-        <span class="separator">&#9733;</span>
-        <span>IMPORTANT NOTICE</span>
-        <span class="separator">&#9733;</span>
         <span class="highlight">The Last Date For Registration Is Extended Upto 7th October 2026</span>
-        <span class="separator">&#9733;</span>
-        <span>REGISTER NOW!</span>
-        <span class="separator">&#9733;</span>
-        <span>Don't Miss Out — Limited Seats Available!</span>
-        <span class="separator">&#9733;</span>
+        <span class="separator">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <span class="highlight">The Last Date For Registration Is Extended Upto 7th October 2026</span>
+        <span class="separator">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
       </span>
       <span class="announcement-bar__text" aria-hidden="true">
-        <span class="separator">&#9733;</span>
-        <span>IMPORTANT NOTICE</span>
-        <span class="separator">&#9733;</span>
         <span class="highlight">The Last Date For Registration Is Extended Upto 7th October 2026</span>
-        <span class="separator">&#9733;</span>
-        <span>REGISTER NOW!</span>
-        <span class="separator">&#9733;</span>
-        <span>Don't Miss Out — Limited Seats Available!</span>
-        <span class="separator">&#9733;</span>
+        <span class="separator">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <span class="highlight">The Last Date For Registration Is Extended Upto 7th October 2026</span>
+        <span class="separator">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      </span>
+    </div>
+  </div>
+
+  <!-- ============ SCROLLING TRANSPORT ANNOUNCEMENT BANNER ============ -->
+  <div class="announcement-bar-transport" id="announcementBarTransport">
+    <div class="transport-track">
+      <span class="transport-text">
+        <span class="transport-highlight">Transport facilities are available on all routes to attend the symposium on 09.10.2026</span>
+        <span class="separator">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <span class="transport-highlight">Transport facilities are available on all routes to attend the symposium on 09.10.2026</span>
+        <span class="separator">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      </span>
+      <span class="transport-text" aria-hidden="true">
+        <span class="transport-highlight">Transport facilities are available on all routes to attend the symposium on 09.10.2026</span>
+        <span class="separator">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <span class="transport-highlight">Transport facilities are available on all routes to attend the symposium on 09.10.2026</span>
+        <span class="separator">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
       </span>
     </div>
   </div>
@@ -1380,7 +1467,7 @@
         <h2>The Symposium</h2>
         <h3>Latest Updates</h3>
         <p>
-          VYUHAM'26 is a National Level Technical Symposium organised by the Department of MCA,
+          VYUHAM'26 is a National Level Technical Symposium organized by the Department of MCA,
           K.L.N. College of Engineering — an autonomous, ISO 9001:2015 certified institution
           affiliated to Anna University, Chennai. For one day, our campus becomes a battlefield of
           ideas: coders debug under pressure, builders craft under deadline, hackers pitch under the
@@ -1391,7 +1478,7 @@
           you prove it. Assemble your team, pick your battles, and step into the arena.
         </p>
         <div class="about__org">
-          <p><strong>Organised by</strong> — Department of MCA</p>
+          <p><strong>Organized by</strong> — Department of MCA</p>
           <p>K.L.N. College of Engineering, Pottapalayam – 630612, Sivagangai District</p>
         </div>
       </div>
